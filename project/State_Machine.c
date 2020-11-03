@@ -27,10 +27,47 @@ void state_advance(){
     if(side_switch){
       current_state = START;
     }
+    break;
+    
   case MENU_1:
-  case MENU_2;
-  case MENU_3;
+    tempo = 75;
+    red_on = 1, green_on = 0;
+    switching_leds_assembly();
+    led_update();
+    current_state = assembly_help;
+    if(side_switch){
+      current_state = START;
+    }
+    break;
+    
+  case MENU_2:
+    tempo = 50;
+    song_one(); //found in buzzer.c
+    if(side_switch){
+      current_state = START;
+      buzzer_set_period(-1);
+      reset_counters();
+    }
+    break;
+    
+  case assembly_help;
+   tempo = 75;
+   switching_leds_assembly();
+   led_update();
+   current_state = assembly_help;
+   if(side_switch){
+     current_state = START;
+   }
+   break;
   
+  case MENU_3;
+   tempo = 125;
+   song_two();
+   if(side_switch){
+     current_state = START;
+     buzzer_set_Period(-1);
+     reset_counters();
+    }
   }
 }
     
