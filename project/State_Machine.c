@@ -6,7 +6,7 @@
 //#include "assembly.h"
 
 //menu options
-static enum(START, MENU_0, MENU_1, MENU_2, MENU_3, assembly_help} current_state = START;
+static enum{START, MENU_0, MENU_1, MENU_2, MENU_3, assembly_help} current_state = START;
 // determine the speed for each state 
 char tempo; 
 
@@ -18,13 +18,13 @@ void state_advance(){
     green_on = 1;
     led_update();
     // have user choose between the four buttons 
-    if(switch1_state_down){
+    if(switch1){
       current_state = MENU_0;
-    }else if(switch2_state_down){
+    }else if(switch2){
       current_state = MENU_1;
-    }else if(switch3_state_down){
+    }else if(switch3){
       current_state = MENU_2;
-    }else if(switch4_state_down){
+    }else if(switch4){
       current_state = MENU_3;
     }
     break;
@@ -36,7 +36,7 @@ void state_advance(){
     red_on = 0; green_on = 0;
     led_update();
     current_state = MENU_0;
-    if(side_switch){
+    if(switch_state_down){
       current_state = START;
     }
     break;
