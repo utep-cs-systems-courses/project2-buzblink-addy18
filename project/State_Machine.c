@@ -1,3 +1,13 @@
+#include <msp430.h>
+#include "State_Machine.h"
+#include "led.h"
+#include "buzzer.h"
+#include "switches.h"
+#include "assembly.h"
+
+static enum(START, MENU_0, MENU_1, MENU_2, MENU_3, assembly_help} current_state = START;
+char tempo; 
+
 void state_advance(){
   // begin with both llights on 
   switch(current_state){
