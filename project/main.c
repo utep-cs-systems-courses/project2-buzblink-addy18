@@ -1,3 +1,4 @@
+//Alternate LEDs from off, Green and Red 
 #include <msp430.h>
 #include "led.h"
 #include "switches.h"
@@ -5,11 +6,11 @@
 #include "libTimer.h"
 
 int main(void){
-  conClocks();
+  configureClocks(); //setup master oscillator, CPU & peripheral clocks
   led_init();
-  wdInterrupts();
+  enableWDInterrupts(); // enable periodic interrupt
   switch_init();
   buzzer_init();
-
-  or_sr(0x18);
+  // buzzer_set_period(1000); // start buzzing
+  or_sr(0x18); //CPU off, GIE on 
 }
