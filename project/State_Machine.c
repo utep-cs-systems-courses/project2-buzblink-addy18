@@ -3,7 +3,7 @@
 #include "led.h"
 #include "buzzer.h"
 #include "switches.h"
-//#include "assembly.h"
+#include "assembly.h"
 
 //menu options
 static enum{START, MENU_0, MENU_1, MENU_2, MENU_3, assembly_help} current_state = START;
@@ -47,7 +47,7 @@ void state_advance(){
     // assembly is being used 
     switching_leds_assembly(); 
     led_update();
-    current_state = assembly_help;
+    //current_state = assembly_help;
     if(switch_state_down){
       current_state = START;
     }
@@ -58,20 +58,20 @@ void state_advance(){
     //song_one(); //found in buzzer.c
     if(switch_state_down){
       current_state = START;
-      buzzer_set_period(-1);
-      reset_counters();
+      //buzzer_set_period(-1);
+      //  reset_counters();
     }
     break;
     //help assembly code flash LEDs
-  case assembly_help:
-   tempo = 75;
-   switching_leds_assembly();
-   led_update();
-   current_state = assembly_help;
-   if(switch_state_down){
-     current_state = START;
-   }
-   break;
+    //case assembly_help:
+    //tempo = 75;
+   //switching_leds_assembly();
+   //led_update();
+   //current_state = assembly_help;
+   //if(switch_state_down){
+     //current_state = START;
+     //}
+   //   break;
    //play song and LED will flash with it 
   case MENU_3:
    tempo = 125;
@@ -79,8 +79,8 @@ void state_advance(){
    //song_two(); 
    if(switch_state_down){
      current_state = START;
-     buzzer_set_period(-1);
-     reset_counters();
+     //buzzer_set_period(-1);
+     //reset_counters();
     }
   }
 }
