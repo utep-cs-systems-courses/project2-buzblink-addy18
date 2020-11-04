@@ -3,7 +3,7 @@
 #include "switches.h"
 
 unsigned char red_on = 0, green_on = 0;
-static char redVAL[] = {0, LED_RED}, greenVAL[] = {0, LED_GREEN};
+static char redVal[] = {0, LED_RED}, greenVal[] = {0, LED_GREEN};
 
 void led_init(){
   P1DIR |= LEDS; //bits attached to leds are output
