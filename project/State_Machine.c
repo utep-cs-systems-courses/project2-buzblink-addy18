@@ -3,7 +3,7 @@
 #include "led.h"
 #include "buzzer.h"
 #include "switches.h"
-#include "assembly.h"
+//#include "assembly.h"
 
 //menu options
 static enum(START, MENU_0, MENU_1, MENU_2, MENU_3, assembly_help} current_state = START;
@@ -18,13 +18,13 @@ void state_advance(){
     green_on = 1;
     led_update();
     // have user choose between the four buttons 
-    if(switch1){
+    if(switch1_state_down){
       current_state = MENU_0;
-    }else if(switch2){
+    }else if(switch2_state_down){
       current_state = MENU_1;
-    }else if(switch3){
+    }else if(switch3_state_down){
       current_state = MENU_2;
-    }else if(switch4){
+    }else if(switch4_state_down){
       current_state = MENU_3;
     }
     break;
@@ -48,38 +48,38 @@ void state_advance(){
     switching_leds_assembly(); 
     led_update();
     current_state = assembly_help;
-    if(side_switch){
+    if(switch_state_down){
       current_state = START;
     }
     break;
     //play sound 
   case MENU_2:
     tempo = 50;
-    song_one(); //found in buzzer.c
-    if(side_switch){
+    //song_one(); //found in buzzer.c
+    if(switch_state_down){
       current_state = START;
       buzzer_set_period(-1);
       reset_counters();
     }
     break;
     //help assembly code flash LEDs
-  case assembly_help;
+  case assembly_help:
    tempo = 75;
    switching_leds_assembly();
    led_update();
    current_state = assembly_help;
-   if(side_switch){
+   if(switch_state_down){
      current_state = START;
    }
    break;
    //play song and LED will flash with it 
-  case MENU_3;
+  case MENU_3:
    tempo = 125;
    // found in buzzer.c
-   song_two(); 
-   if(side_switch){
+   //song_two(); 
+   if(switch_state_down){
      current_state = START;
-     buzzer_set_Period(-1);
+     buzzer_set_period(-1);
      reset_counters();
     }
   }
