@@ -18,7 +18,6 @@ void switch_init(){ //set up switch
   P1OUT |= SWITCHES;
   P1DIR &= ~SWITCHES;
   switch_update_interrupt_sense();
-  led_update();
 
   switch_interrupt_handler();
 
@@ -27,9 +26,9 @@ void switch_init(){ //set up switch
 void switch_interrupt_handler(){
   char p1val = switch_update_interrupt_sense();
   switch1 = (p1val & SW1) ? 0 : 1;
-  swicth2 = (p1val & SW2) ? 0 : 1;
-  swicth3 = (p1val & SW3) ? 0 : 1;
-  swicth4 = (p1val & SW4) ? 0 : 1;
+  switch2 = (p1val & SW2) ? 0 : 1;
+  switch3 = (p1val & SW3) ? 0 : 1;
+  switch4 = (p1val & SW4) ? 0 : 1;
 
   switch_state_changed =1;
 }
