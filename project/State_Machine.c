@@ -5,7 +5,9 @@
 #include "switches.h"
 #include "assembly.h"
 
+//menu options
 static enum(START, MENU_0, MENU_1, MENU_2, MENU_3, assembly_help} current_state = START;
+// determine the speed for each state 
 char tempo; 
 
 void state_advance(){
@@ -38,18 +40,19 @@ void state_advance(){
       current_state = START;
     }
     break;
-    
+    // will flash red and green back and fourth 
   case MENU_1:
     tempo = 75;
     red_on = 1, green_on = 0;
-    switching_leds_assembly();
+    // assembly is being used 
+    switching_leds_assembly(); 
     led_update();
     current_state = assembly_help;
     if(side_switch){
       current_state = START;
     }
     break;
-    
+    //play sound 
   case MENU_2:
     tempo = 50;
     song_one(); //found in buzzer.c
@@ -59,7 +62,7 @@ void state_advance(){
       reset_counters();
     }
     break;
-    
+    //help assembly code flash LEDs
   case assembly_help;
    tempo = 75;
    switching_leds_assembly();
@@ -69,10 +72,11 @@ void state_advance(){
      current_state = START;
    }
    break;
-  
+   //play song and LED will flash with it 
   case MENU_3;
    tempo = 125;
-   song_two();
+   // found in buzzer.c
+   song_two(); 
    if(side_switch){
      current_state = START;
      buzzer_set_Period(-1);
