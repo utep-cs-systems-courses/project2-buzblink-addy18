@@ -6,9 +6,10 @@
 #define SW3 BIT2 //switch3 is p2.2
 #define SW4 BIT3 //switch4 is p2.3
 #define SWITCHES (SW1 | SW2 | SW3 | SW4) //the four switches
+
 void switch_init();
 void switch_interrupt_handler();
 
-extern char switch_state_down, switch_state_changed, switch1, switch2, switch3, switch4; // effectively boolean
+extern char switch_state_down, switch_state_changed, switch1, switch2, switch3, switch4, current_state; // effectively boolean
 
 #endif //included
