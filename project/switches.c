@@ -3,7 +3,7 @@
 #include "led.h"
 #include "State_Machine.h"
 
-char switch_state_down, switch_state_changed, switch1, switch2, switch3, switch4; //effectively boolean
+char switch_state_down, switch_state_changed, switch1, switch2, switch3, switch4, current_state; //effectively boolean
 
 static char switch_update_interrupt_sense(){
   char p2val = P2IN;
@@ -18,8 +18,8 @@ void switch_init(){ //set up switch
   P2IE |= SWITCHES;
   P2OUT |= SWITCHES;
   P2DIR &= ~SWITCHES;
+  
   switch_update_interrupt_sense();
-
   switch_interrupt_handler();
 
 }
@@ -31,6 +31,6 @@ void switch_interrupt_handler(){
   switch3 = (p2val & SW3) ? 0 : 1;
   switch4 = (p2val & SW4) ? 0 : 1;
 
-  switch_state_changed =1;
+  state_advance();
 }
   
