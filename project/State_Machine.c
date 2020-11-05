@@ -6,10 +6,6 @@
 
 void state_advance(){
   switch(current_state){
-  case 0:
-    song2();
-    break;
-
   case 1: //blink green light
     song1();
     for(int i = 0; i < 10; i++){
@@ -53,7 +49,7 @@ void state_advance(){
     break;
 
   case 4:
-    song3();
+    //song3();
     for(int i = 0; i < 100; i++){
       P1OUT = LED_RED;
       P1OUT = LED_GREEN;
