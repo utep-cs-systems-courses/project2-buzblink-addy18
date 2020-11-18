@@ -37,33 +37,99 @@ void buzzer_set_period(short cycles){ // buzzer clock = 2MHz. (period of 1k resu
 }
 
 void song1(){
+  int i = 0;
   int song[] = {A3, G3, F4, E3};
+  /*
   for(int i = 0; i < sizeof(song) / sizeof(*song); i++){
     buzzer_set_period(song[i]);
     __delay_cycles(850000);
   }
+  */
+
+  while(i < sizeof(song)){
+    int first = 0;
+    while (first < 20){
+      int second = 0;
+      while(second < 30000){
+	second++;
+      }
+      first++;
+    }
+    buzzer_set_period(song[i]);
+    state_advance();
+    i++;
+  }
 }
 
 void song2(){
+  int i = 0;
   int song[] = {B4, A4, F4};
+  /*
   for(int i = 0; i < sizeof(song) / sizeof(*song); i++){
     buzzer_set_period(song[i]);
     __delay_cycles(8500000);
+  }
+  */
+  while(i < sizeof(song)){
+    int first = 0;
+    while(first < 20){
+      int second = 0;
+      while(second < 30000){
+	second++;
+      }
+      first++;
+    }
+    buzzer_set_period(song[i]);
+    state_advance();
+    i++;
   }
 }
 
 void song3(){
+  int i = 0;
   int song[] = {G4, D4, C3, B3};
+  /*
   for(int i = 0; i < sizeof(song) / sizeof(*song); i++){
     buzzer_set_period(song[i]);
     __delay_cycles(8500000);
   }
+  */
+  while(i < sizeof(song)){
+    int first = 0;
+    while(first < 20){
+      int second = 0;
+      while(second < 30000){
+	second++;
+      }
+      first++;
+    }
+    buzzer_set_period(song[i]);
+    state_advance();
+    i++;
+  }
 }
 
 void song4(){
+  int i = 0;
   int song[] = {E4, C3, D4, A4, G3};
+  /*
   for(int i = 0; i < sizeof(song) / sizeof(*song); i++){
     buzzer_set_period(song[i]);
     __delay_cycles(8500000);
+  }
+  */
+
+  while(i < sizeof(song)){
+    int first = 0;
+    while(first < 20){
+      int second = 0;
+      while(second < 30000){
+	second++;
+      }
+      first++;
+    }
+    buzzer_set_period(song[i]);
+    state_advance();
+    i++;
   }
 }
