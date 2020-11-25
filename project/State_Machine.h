@@ -4,9 +4,11 @@
 //extern char tempo;
 void state_advance();
 
-void reset_state();
-void led_state(unsigned char g, unsigned char r);
-void delay(unsigned int t);
-void dim();
+void dim_leds(int x);
+char toggle_green();
+char toggle_red();
+void dim25();
+void dim50();
+void dim75();
 
 #endif
